@@ -44,7 +44,7 @@ public class RobotMap {
   // Elevator encoder (AMT-103V)
   public static Encoder visionencoder = new Encoder(0, 1, false, EncodingType.k4X);
   private static double shooterPPR = 2048;
-  public static double elevatorAPR = 360 / shooterPPR;
+  public static double shooterAPR = 360 / shooterPPR;
 
   public static double getDistance() {
     double dist = rangeInput.getVoltage();
