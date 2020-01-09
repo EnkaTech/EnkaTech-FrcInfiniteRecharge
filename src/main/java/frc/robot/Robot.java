@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSink;
@@ -21,7 +22,6 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -31,21 +31,32 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-  public static OI m_oi;
-
+  public static OI IO;
+  public static DriveTrain drivetrain = new DriveTrain();
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-
+  public static Compressor compressor = new Compressor();
+  public static NetworkTable table;
+  public static CameraServer cameraServer;
+  public static UsbCamera visionCam;
+  
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
   @Override
   public void robotInit() {
-    m_oi = new OI();
+    IO = new OI();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    RobotMap.gyro.calibrate();
+    cameraServer = CameraServer.getInstance();
+    visionCam = cameraServer.startAutomaticCapture();
+    visionCam.setResolution(640, 480);
+    table = NetworkTableInstance.getDefault().getTable("imgproc");
+    RobotMap.visionencoder.setDistancePerPulse(RobotMap.elevatorAPR);
+    compressor.setClosedLoopControl(true);
   }
 
   /**
