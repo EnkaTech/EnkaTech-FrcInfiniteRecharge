@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.VisionTargetting;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSink;
@@ -30,13 +31,14 @@ import edu.wpi.first.wpilibj.Compressor;
  * project.
  */
 public class Robot extends TimedRobot {
+  public static VisionTargetting visionsystem = new VisionTargetting();
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI IO;
   public static DriveTrain drivetrain = new DriveTrain();
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   public static Compressor compressor = new Compressor();
-  public static NetworkTable table;
+  public static NetworkTable visiontable;
   public static CameraServer cameraServer;
   public static UsbCamera visionCam;
   
@@ -54,7 +56,7 @@ public class Robot extends TimedRobot {
     cameraServer = CameraServer.getInstance();
     visionCam = cameraServer.startAutomaticCapture();
     visionCam.setResolution(640, 480);
-    table = NetworkTableInstance.getDefault().getTable("imgproc");
+    visiontable = NetworkTableInstance.getDefault().getTable("imgproc");
     RobotMap.visionencoder.setDistancePerPulse(RobotMap.elevatorAPR);
     compressor.setClosedLoopControl(true);
   }
@@ -69,6 +71,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    
   }
 
   /**

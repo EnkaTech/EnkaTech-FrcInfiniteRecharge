@@ -45,8 +45,6 @@ public class RobotMap {
   public static Encoder visionencoder = new Encoder(0, 1, false, EncodingType.k4X);
   private static double shooterPPR = 2048;
   public static double elevatorAPR = 360 / shooterPPR;
-  
-
 
   public static double getDistance() {
     double dist = rangeInput.getVoltage();
@@ -68,17 +66,17 @@ public class RobotMap {
   // Hazne
   private static SpeedController HazneMotor1 = new VictorSP(5);
   private static SpeedController HazneMotor2 = new VictorSP(1);
-  public static SpeedControllerGroup HazneMotorları = new SpeedControllerGroup(HazneMotor1,  HazneMotor2);
+  
 
   // Intake
   public static SpeedController wheel1 = new VictorSP(2);
   public static SpeedController wheel2 = new VictorSP(3);
-
+ 
   //Shooter
-  public static SpeedController jointMotor = new WPI_VictorSPX(5);
-
+  public static SpeedController ShooterMotor = new WPI_VictorSPX(5);
+  public static SpeedController ShooterAngleMotor = new WPI_VictorSPX(6);
   // Solenoidler
-  public static DoubleSolenoid modeSolenoid = new DoubleSolenoid(4, 5);
-  public static DoubleSolenoid hatchSolenoid = new DoubleSolenoid(6, 7);
+  public static DoubleSolenoid IntakeSolenoid = new DoubleSolenoid(4, 5);
+  public static DoubleSolenoid ShooterSolenoid = new DoubleSolenoid(6, 7);
 
   }

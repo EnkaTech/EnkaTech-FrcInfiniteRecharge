@@ -9,14 +9,18 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.Robot;
-
+import frc.robot.RobotMap;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 public class VisionTargetting extends PIDSubsystem {
-
+  
+  
   public VisionTargetting() {
     // Intert a subsystem name and PID values here
     super("Elevator", -0.25, -0.002, 0);
+    
     setAbsoluteTolerance(2);
-    setInputRange(-175, 175);
+    setInputRange(-180, 180);
     setOutputRange(-0.2, 0.2);
     // enable() - Enables the PID controller.
   }
@@ -29,15 +33,17 @@ public class VisionTargetting extends PIDSubsystem {
 
   @Override
   protected double returnPIDInput() {
+    double Visionerror = Robot.visiontable.getEntry("Heading").getDouble(0);
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return 0.0;
+    return Visionerror;
   }
 
   @Override
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
     // e.g. yourMotor.set(output);
+    RobotMap.ShooterAngleMotor.set(output);
   }
 }
