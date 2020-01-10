@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.VisionTargetting;
+import frc.robot.subsystems.Hazne;
+import frc.robot.commands.HazneManuel;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSink;
@@ -32,9 +32,9 @@ import edu.wpi.first.wpilibj.Compressor;
  */
 public class Robot extends TimedRobot {
   public static VisionTargetting visionsystem = new VisionTargetting();
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI IO;
   public static DriveTrain drivetrain = new DriveTrain();
+  public static Hazne hazne = new Hazne();
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   public static Compressor compressor = new Compressor();
@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     IO = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    m_chooser.setDefaultOption("Default Auto", new HazneManuel());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     RobotMap.gyro.calibrate();
@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
     visionCam = cameraServer.startAutomaticCapture();
     visionCam.setResolution(640, 480);
     visiontable = NetworkTableInstance.getDefault().getTable("imgproc");
-    RobotMap.visionencoder.setDistancePerPulse(RobotMap.elevatorAPR);
+    RobotMap.visionencoder.setDistancePerPulse(RobotMap.shooterAPR);
     compressor.setClosedLoopControl(true);
   }
 

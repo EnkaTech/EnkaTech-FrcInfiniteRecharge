@@ -41,7 +41,6 @@ public class RobotMap {
 
   // Sensorler
   private static AnalogInput rangeInput = new AnalogInput(0);
-  // Elevator encoder (AMT-103V)
   public static Encoder visionencoder = new Encoder(0, 1, false, EncodingType.k4X);
   private static double shooterPPR = 2048;
   public static double shooterAPR = 360 / shooterPPR;
@@ -57,26 +56,24 @@ public class RobotMap {
   public static SpeedController leftMotor1 = new WPI_VictorSPX(4);
   public static SpeedController leftMotor2 = new WPI_VictorSPX(3);
   public static SpeedController  rightMotor1= new WPI_TalonSRX(1);
-  public static SpeedController  rightMotor2= new WPI_TalonSRX(2);
-    
-  public static SpeedController left= new SpeedControllerGroup(leftMotor1,leftMotor2);
-	public static SpeedController right= new SpeedControllerGroup(rightMotor1,rightMotor2);
+  public static SpeedController  rightMotor2= new WPI_TalonSRX(2);    
+  public static SpeedControllerGroup left= new SpeedControllerGroup(leftMotor1,leftMotor2);
+	public static SpeedControllerGroup right= new SpeedControllerGroup(rightMotor1,rightMotor2);
 	public static DifferentialDrive driveSystem = new DifferentialDrive(left,right);
-
   // Hazne
-  private static SpeedController HazneMotor1 = new VictorSP(5);
-  private static SpeedController HazneMotor2 = new VictorSP(1);
-  
-
+  public static SpeedController HazneMotor1 = new VictorSP(5);
+  public static SpeedController HazneMotor2 = new VictorSP(1);
   // Intake
   public static SpeedController wheel1 = new VictorSP(2);
-  public static SpeedController wheel2 = new VictorSP(3);
- 
   //Shooter
   public static SpeedController ShooterMotor = new WPI_VictorSPX(5);
   public static SpeedController ShooterAngleMotor = new WPI_VictorSPX(6);
+  //Çark 
+  public static SpeedController LuckyWheel = new WPI_VictorSPX(7);
+  //Tırmanma
+  public static SpeedController Climb1 = new WPI_VictorSPX(8);
+  public static SpeedController Climb2 = new WPI_VictorSPX(9);
   // Solenoidler
   public static DoubleSolenoid IntakeSolenoid = new DoubleSolenoid(4, 5);
   public static DoubleSolenoid ShooterSolenoid = new DoubleSolenoid(6, 7);
-
   }

@@ -6,13 +6,13 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-
+import frc.robot.commands.HazneManuel;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+import frc.robot.RobotMap;
 /**
  * An example subsystem. You can replace with me with your own subsystem.
  */
-public class ExampleSubsystem extends Subsystem {
+public class Hazne extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -20,6 +20,10 @@ public class ExampleSubsystem extends Subsystem {
   @Override
   protected void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new HazneManuel());
+  }
+  public void move(double x){
+    RobotMap.HazneMotor1.set(x);
+    RobotMap.HazneMotor2.set(x);
   }
 }
