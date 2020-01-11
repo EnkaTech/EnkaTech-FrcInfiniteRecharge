@@ -18,5 +18,5 @@ public AutoShooter()  {
   addSequential(new ShooterManuel(1), 3);
   addSequential(new ShooterManuel(1), 2);
   addParallel(new HazneManuel(0.5));
-}
+  }
 }

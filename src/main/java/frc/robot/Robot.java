@@ -16,6 +16,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.VisionTargetting;
 import frc.robot.subsystems.Hazne;
 import frc.robot.subsystems.HazneOtonom;
+import frc.robot.subsystems.TempClimb;
 import frc.robot.subsystems.TempIntake;
 import frc.robot.subsystems.TempShooter;
 import frc.robot.commands.HazneManuel;
@@ -48,6 +49,7 @@ public class Robot extends TimedRobot {
   public static UsbCamera visionCam;
   public static TempShooter tshooter = new TempShooter();
   public static TempIntake tintake = new TempIntake(); 
+  public static TempClimb tclimb = new TempClimb();
   
   /**
    * This function is run when the robot is first started up and should be
