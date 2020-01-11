@@ -11,29 +11,33 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
+  // Logitech G30;
   public Joystick joy1 = new Joystick(0);
+  // Extreme 3D Pro
   public Joystick joy2 = new Joystick(1);
-  public Button j1_3 = new JoystickButton(joy1, 3);
-  public Button j1_11 = new JoystickButton(joy1, 11);
-  public Button j1_9  = new JoystickButton(joy1, 9);
-  public Button j1_10 = new JoystickButton(joy1, 10);
-  public Button j1_7 = new JoystickButton(joy1, 7);
-  public Button j1_8 = new JoystickButton(joy1, 8);
-  public Button j1_5 = new JoystickButton(joy1, 5);
-  public Button j1_6 = new JoystickButton(joy1, 6);
-  public Button j1_4 = new JoystickButton(joy1, 4);
-  public Button j1_12 = new JoystickButton(joy1, 12);
   
-  public Button j2_1 = new JoystickButton(joy2, 2);
-  public Button j2_2 = new JoystickButton(joy2, 3);
-  public Button j2_3 = new JoystickButton(joy2, 1);
-  public Button j2_4 = new JoystickButton(joy2, 4);
-  public Button j2_5 = new JoystickButton(joy2, 5);
-  public Button j2_6 = new JoystickButton(joy2, 6);
-  public Button j2_7 = new JoystickButton(joy2, 7);
-  public Button j2_8 = new JoystickButton(joy2, 8);
-  public Button j2_9 = new JoystickButton(joy2, 9);
-  public Button j2_10 = new JoystickButton(joy2, 10);
-  public Button j2_11 = new JoystickButton(joy2, 11);
-  public Button j2_12 = new JoystickButton(joy2, 12);
+  public Button Green = new JoystickButton(joy1, 1);
+  public Button Red = new JoystickButton(joy1, 2);
+  public Button Blue = new JoystickButton(joy1, 3);
+  public Button Yellow = new JoystickButton(joy1, 4);
+  public Button L1 = new JoystickButton(joy1, 5);
+  public Button R1 = new JoystickButton(joy1, 6);
+  public Button Back = new JoystickButton(joy1, 7);
+  public Button Start = new JoystickButton(joy1, 8);
+  public Button LeftT = new JoystickButton(joy1, 9);
+  public Button RightT = new JoystickButton(joy1, 10);
+  
+  
+  public Button Hit = new JoystickButton(joy2, 1);
+  public Button Thumb = new JoystickButton(joy2, 2);
+  public Button Left1 = new JoystickButton(joy2, 3);
+  public Button Right1 = new JoystickButton(joy2, 4);
+  public Button Left2 = new JoystickButton(joy2, 5);
+  public Button Right2 = new JoystickButton(joy2, 6);
+  public Button Yellow3 = new JoystickButton(joy2, 7);
+  public Button Red3 = new JoystickButton(joy2, 8);
+  public Button Yellow2 = new JoystickButton(joy2, 9);
+  public Button Red2  = new JoystickButton(joy2, 10);
+  public Button Yellow1 = new JoystickButton(joy2, 11);
+  public Button Red1 = new JoystickButton(joy2, 12);
 }
