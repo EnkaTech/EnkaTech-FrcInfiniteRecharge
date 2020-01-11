@@ -11,11 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
-  // Logitech G30;
   public Joystick joy1 = new Joystick(0);
-  // Extreme 3D Pro
   public Joystick joy2 = new Joystick(1);
-  
   public Button Green = new JoystickButton(joy1, 1);
   public Button Red = new JoystickButton(joy1, 2);
   public Button Blue = new JoystickButton(joy1, 3);
