@@ -23,6 +23,7 @@ public class OI {
   public Button j1_6 = new JoystickButton(joy1, 6);
   public Button j1_4 = new JoystickButton(joy1, 4);
   public Button j1_12 = new JoystickButton(joy1, 12);
+  
   public Button j2_1 = new JoystickButton(joy2, 2);
   public Button j2_2 = new JoystickButton(joy2, 3);
   public Button j2_3 = new JoystickButton(joy2, 1);

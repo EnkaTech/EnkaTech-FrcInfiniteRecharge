@@ -15,6 +15,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.VisionTargetting;
 import frc.robot.subsystems.Hazne;
+import frc.robot.subsystems.HazneOtonom;
+import frc.robot.subsystems.TempIntake;
+import frc.robot.subsystems.TempShooter;
 import frc.robot.commands.HazneManuel;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.cscore.UsbCamera;
@@ -31,8 +34,10 @@ import edu.wpi.first.wpilibj.Compressor;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static VisionTargetting visionsystem = new VisionTargetting();
+  
   public static OI IO;
+  public static VisionTargetting visionsystem = new VisionTargetting();
+  public static HazneOtonom hazneOtonom = new HazneOtonom();
   public static DriveTrain drivetrain = new DriveTrain();
   public static Hazne hazne = new Hazne();
   Command m_autonomousCommand;
@@ -41,6 +46,8 @@ public class Robot extends TimedRobot {
   public static NetworkTable visiontable;
   public static CameraServer cameraServer;
   public static UsbCamera visionCam;
+  public static TempShooter tshooter = new TempShooter();
+  public static TempIntake tintake = new TempIntake(); 
   
   /**
    * This function is run when the robot is first started up and should be
@@ -49,7 +56,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     IO = new OI();
-    m_chooser.setDefaultOption("Default Auto", new HazneManuel());
+    m_chooser.setDefaultOption("Default Auto", new HazneManuel(0));
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     RobotMap.gyro.calibrate();
@@ -57,7 +64,7 @@ public class Robot extends TimedRobot {
     visionCam = cameraServer.startAutomaticCapture();
     visionCam.setResolution(640, 480);
     visiontable = NetworkTableInstance.getDefault().getTable("imgproc");
-    RobotMap.visionencoder.setDistancePerPulse(RobotMap.shooterAPR);
+    RobotMap.HazneEncoder.setDistancePerPulse(RobotMap.HazneDPR);
     compressor.setClosedLoopControl(true);
   }
 
@@ -149,4 +156,7 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
+public static void tintake(double power) {
+}
 }

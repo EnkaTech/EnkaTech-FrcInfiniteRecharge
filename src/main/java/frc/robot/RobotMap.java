@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -38,12 +39,13 @@ public class RobotMap {
   public static double map(double x, double in_min, double in_max, double out_min, double out_max) {
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
   }
-
+ 
   // Sensorler
+  public static DigitalInput LimitSwitch = new DigitalInput(0);
   private static AnalogInput rangeInput = new AnalogInput(0);
-  public static Encoder visionencoder = new Encoder(0, 1, false, EncodingType.k4X);
-  private static double shooterPPR = 2048;
-  public static double shooterAPR = 360 / shooterPPR;
+  public static Encoder HazneEncoder = new Encoder(2, 3, false, EncodingType.k4X);
+  private static double HaznePPR = 2048;
+  public static double HazneDPR = (1 / HaznePPR)*12;
 
   public static double getDistance() {
     double dist = rangeInput.getVoltage();
@@ -75,5 +77,5 @@ public class RobotMap {
   public static SpeedController Climb2 = new WPI_VictorSPX(9);
   // Solenoidler
   public static DoubleSolenoid IntakeSolenoid = new DoubleSolenoid(4, 5);
-  public static DoubleSolenoid ShooterSolenoid = new DoubleSolenoid(6, 7);
+  public static DoubleSolenoid WheelSolenoid = new DoubleSolenoid(6, 7);
   }
