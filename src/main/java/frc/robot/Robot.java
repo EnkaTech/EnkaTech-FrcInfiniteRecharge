@@ -19,6 +19,7 @@ import frc.robot.subsystems.HazneOtonom;
 import frc.robot.subsystems.TempClimb;
 import frc.robot.subsystems.TempIntake;
 import frc.robot.subsystems.TempShooter;
+import frc.robot.subsystems.TempWheel;
 import frc.robot.commands.HazneManuel;
 import frc.robot.commands.HazneOtonomKomutu;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -51,6 +52,7 @@ public class Robot extends TimedRobot {
   public static TempShooter tshooter = new TempShooter();
   public static TempIntake tintake = new TempIntake(); 
   public static TempClimb tclimb = new TempClimb();
+  public static TempWheel twheel = new TempWheel();
   public static double x = 0;
   /**
    * This function is run when the robot is first started up and should be
