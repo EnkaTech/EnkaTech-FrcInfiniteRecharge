@@ -10,16 +10,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class HazneOtonom extends Command {
-  public HazneOtonom() {
+public class HazneOtonomKomutu extends Command {
+  double x;
+  public HazneOtonomKomutu(double y) {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.hazneOtonom);
+    x = y;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.hazneOtonom.setSetpoint(18);
+    Robot.hazneOtonom.setSetpoint(x);
     
   }
 

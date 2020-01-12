@@ -22,7 +22,7 @@ public class HazneOtonom extends PIDSubsystem {
     // Intert a subsystem name and PID values here
     super("Hazne", 0.25, 0, 0.25);
     setAbsoluteTolerance(1);
-    setInputRange(-18, 18);
+    setInputRange(-10, 9999);
     setOutputRange(0, 1);
         
   }

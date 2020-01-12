@@ -20,6 +20,7 @@ import frc.robot.subsystems.TempClimb;
 import frc.robot.subsystems.TempIntake;
 import frc.robot.subsystems.TempShooter;
 import frc.robot.commands.HazneManuel;
+import frc.robot.commands.HazneOtonomKomutu;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSink;
@@ -50,7 +51,7 @@ public class Robot extends TimedRobot {
   public static TempShooter tshooter = new TempShooter();
   public static TempIntake tintake = new TempIntake(); 
   public static TempClimb tclimb = new TempClimb();
-  
+  public static double x = 0;
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -80,6 +81,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    if (RobotMap.LimitSwitch.get()){
+      x += 18;
+    }
     
   }
 
@@ -150,6 +154,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    hazneOtonom.setSetpoint(x);
   }
 
   /**
@@ -159,6 +164,4 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
 
-public static void tintake(double power) {
-}
 }
