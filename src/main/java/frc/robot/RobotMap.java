@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -41,7 +40,6 @@ public class RobotMap {
   }
  
   // Sensorler
-  public static DigitalInput LimitSwitch = new DigitalInput(0);
   private static AnalogInput rangeInput = new AnalogInput(0);
   public static Encoder HazneEncoder = new Encoder(2, 3, false, EncodingType.k4X);
   private static double HaznePPR = 2048;
