@@ -66,7 +66,8 @@ public class RobotMap {
   // Intake
   public static SpeedController wheel1 = new VictorSP(2);
   //Shooter
-  public static SpeedController ShooterMotor = new WPI_VictorSPX(5);
+  public static SpeedController ShooterMotor2 = new WPI_VictorSPX(5);
+  public static SpeedController ShooterMotor1 = new WPI_VictorSPX(9);
   public static SpeedController ShooterAngleMotor = new WPI_VictorSPX(6);
   //Çark 
   public static SpeedController LuckyWheel = new WPI_VictorSPX(7);

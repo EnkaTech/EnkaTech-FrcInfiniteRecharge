@@ -19,17 +19,18 @@ public class ReverseDriveTrain extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-  }
-
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
     if(Robot.drivetrain.p == true){
       Robot.drivetrain.p = false;
     }
     else if (Robot.drivetrain.p == false){
       Robot.drivetrain.p = true;
     } 
+  }
+
+  // Called repeatedly when this Command is scheduled to run
+  @Override
+  protected void execute() {
+ 
   }
 
   // Make this return true when this Command no longer needs to run execute()
