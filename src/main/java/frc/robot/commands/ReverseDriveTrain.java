@@ -10,24 +10,27 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class HazneOtonomKomutu extends Command {
-  double x;
-  public HazneOtonomKomutu(double y) {
+public class ReverseDriveTrain extends Command {
+  public ReverseDriveTrain() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.hazneOtonom);
-    x = y;
+  requires(Robot.drivetrain);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.hazneOtonom.setSetpoint(x);
-    
+    if(Robot.drivetrain.p == true){
+      Robot.drivetrain.p = false;
+    }
+    else if (Robot.drivetrain.p == false){
+      Robot.drivetrain.p = true;
+    } 
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+ 
   }
 
   // Make this return true when this Command no longer needs to run execute()

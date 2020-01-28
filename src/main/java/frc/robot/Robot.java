@@ -15,13 +15,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.VisionTargetting;
 import frc.robot.subsystems.Hazne;
-import frc.robot.subsystems.HazneOtonom;
 import frc.robot.subsystems.TempClimb;
 import frc.robot.subsystems.TempIntake;
 import frc.robot.subsystems.TempShooter;
 import frc.robot.subsystems.TempWheel;
 import frc.robot.commands.HazneManuel;
-import frc.robot.commands.HazneOtonomKomutu;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSink;
@@ -40,7 +38,6 @@ public class Robot extends TimedRobot {
   
   public static OI IO;
   public static VisionTargetting visionsystem = new VisionTargetting();
-  public static HazneOtonom hazneOtonom = new HazneOtonom();
   public static DriveTrain drivetrain = new DriveTrain();
   public static Hazne hazne = new Hazne();
   Command m_autonomousCommand;
@@ -83,9 +80,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    if (RobotMap.LimitSwitch.get()){
-      x += 18;
-    }
     
   }
 
@@ -156,7 +150,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    hazneOtonom.setSetpoint(x);
+
   }
 
   /**

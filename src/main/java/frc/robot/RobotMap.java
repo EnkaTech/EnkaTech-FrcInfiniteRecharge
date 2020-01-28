@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -41,7 +40,6 @@ public class RobotMap {
   }
  
   // Sensorler
-  public static DigitalInput LimitSwitch = new DigitalInput(0);
   private static AnalogInput rangeInput = new AnalogInput(0);
   public static Encoder HazneEncoder = new Encoder(2, 3, false, EncodingType.k4X);
   private static double HaznePPR = 2048;
@@ -68,7 +66,8 @@ public class RobotMap {
   // Intake
   public static SpeedController wheel1 = new VictorSP(2);
   //Shooter
-  public static SpeedController ShooterMotor = new WPI_VictorSPX(5);
+  public static SpeedController ShooterMotor2 = new WPI_VictorSPX(5);
+  public static SpeedController ShooterMotor1 = new WPI_VictorSPX(9);
   public static SpeedController ShooterAngleMotor = new WPI_VictorSPX(6);
   //Çark 
   public static SpeedController LuckyWheel = new WPI_VictorSPX(7);

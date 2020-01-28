@@ -16,15 +16,16 @@ import frc.robot.RobotMap;
  */
 public class TempShooter extends Subsystem {
   
-  private SpeedController localshooter = RobotMap.ShooterMotor;
-
+  private SpeedController localshooter1 = RobotMap.ShooterMotor1;
+  private SpeedController localshooter2 = RobotMap.ShooterMotor2;
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
   public void shoot (double power){
-    localshooter.set(power);
+    localshooter1.set(power);
+    localshooter2.set(power);
   }
 
 }
