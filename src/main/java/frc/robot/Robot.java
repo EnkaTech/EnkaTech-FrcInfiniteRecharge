@@ -10,8 +10,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.VisionTargetting;
 import frc.robot.subsystems.Hazne;
@@ -19,14 +19,12 @@ import frc.robot.subsystems.TempClimb;
 import frc.robot.subsystems.TempIntake;
 import frc.robot.subsystems.TempShooter;
 import frc.robot.subsystems.TempWheel;
-import frc.robot.commands.HazneManuel;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.cscore.UsbCamera;
+//import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSink;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.Compressor;
+//import edu.wpi.first.networktables.NetworkTable;
+//import edu.wpi.first.networktables.NetworkTableInstance;
+//import edu.wpi.first.cameraserver.CameraServer;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -41,11 +39,10 @@ public class Robot extends TimedRobot {
   public static DriveTrain drivetrain = new DriveTrain();
   public static Hazne hazne = new Hazne();
   Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
-  public static Compressor compressor = new Compressor();
-  public static NetworkTable visiontable;
-  public static CameraServer cameraServer;
-  public static UsbCamera visionCam;
+  //SendableChooser<Command> m_chooser = new SendableChooser<>();
+  //public static NetworkTable visiontable;
+  //public static CameraServer cameraServer;
+  //public static UsbCamera visionCam;
   public static TempShooter tshooter = new TempShooter();
   public static TempIntake tintake = new TempIntake(); 
   public static TempClimb tclimb = new TempClimb();
@@ -58,16 +55,15 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     IO = new OI();
-    m_chooser.setDefaultOption("Default Auto", new HazneManuel(0));
+    //m_chooser.setDefaultOption("Default Auto", new HazneManuel(0));
     // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
-    RobotMap.gyro.calibrate();
-    cameraServer = CameraServer.getInstance();
-    visionCam = cameraServer.startAutomaticCapture();
-    visionCam.setResolution(640, 480);
-    visiontable = NetworkTableInstance.getDefault().getTable("imgproc");
-    RobotMap.HazneEncoder.setDistancePerPulse(RobotMap.HazneDPR);
-    compressor.setClosedLoopControl(true);
+    //SmartDashboard.putData("Auto mode", m_chooser);
+    //RobotMap.gyro.calibrate();
+    //cameraServer = CameraServer.getInstance();
+    //visionCam = cameraServer.startAutomaticCapture();
+    //visionCam.setResolution(640, 480);
+   // visiontable = NetworkTableInstance.getDefault().getTable("imgproc");
+    //RobotMap.HazneEncoder.setDistancePerPulse(RobotMap.HazneDPR);
   }
 
   /**
@@ -110,7 +106,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+    //m_autonomousCommand = m_chooser.getSelected();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",

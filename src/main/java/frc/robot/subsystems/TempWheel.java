@@ -7,31 +7,22 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.LuckywheelManuel;
 
 
 
 public class TempWheel extends Subsystem {
   
-  private static DoubleSolenoid localsolenoid = RobotMap.WheelSolenoid;
+ // private static DoubleSolenoid localsolenoid = RobotMap.WheelSolenoid;
   private static SpeedController localmotor = RobotMap.LuckyWheel;
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
-     //solenoid
-  public void Bringdown () {
-    localsolenoid.set(Value.kForward);
-  }
-
-  public void lift () {
-    localsolenoid.set(Value.kReverse);
+    setDefaultCommand(new LuckywheelManuel(0));
   }
 
     //Wheel motor
