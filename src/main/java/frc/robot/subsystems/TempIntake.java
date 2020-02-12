@@ -7,23 +7,25 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.SpeedController;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.Intake;
 
 /**
  * Add your docs here.
  */
 public class TempIntake extends Subsystem {
-  private static SpeedController localwheel = RobotMap.wheel1;
+  private static VictorSPX localwheel = RobotMap.wheel1;
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+     setDefaultCommand(new Intake(0));
   }
    public void Intake (double power){
-   localwheel.set(power);
+   localwheel.set(ControlMode.PercentOutput,power);
 
    }
 

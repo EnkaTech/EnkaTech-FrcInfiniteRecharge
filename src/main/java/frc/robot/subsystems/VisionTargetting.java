@@ -6,6 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -30,18 +32,13 @@ public class VisionTargetting extends PIDSubsystem {
 
   @Override
   protected double returnPIDInput() {
-    //double Visionerror = Robot.visiontable.getEntry("Heading").getDouble(0);
-    // Return your input value for the PID loop
-    // e.g. a sensor, like a potentiometer:
-    // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return 0;
-    // Visionerror;
+    double Visionerror = Robot.visiontable.getEntry("Heading").getDouble(0);
+ 
+  return Visionerror;
   }
 
   @Override
   protected void usePIDOutput(double output) {
-    // Use output to drive your system, like a motor
-    // e.g. yourMotor.set(output);
-    RobotMap.ShooterAngleMotor.set(output);
+    RobotMap.ShooterAngleMotor.set(ControlMode.PercentOutput,output);
   }
 }

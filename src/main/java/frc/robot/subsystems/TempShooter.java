@@ -7,25 +7,27 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.SpeedController;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.ShooterManuel;
 
 /**
  * Add your docs here.
  */
 public class TempShooter extends Subsystem {
-  
-  private SpeedController localshooter1 = RobotMap.ShooterMotor1;
-  private SpeedController localshooter2 = RobotMap.ShooterMotor2;
+
+  private VictorSPX localshooter1 = RobotMap.ShooterMotor1;
+  private VictorSPX localshooter2 = RobotMap.ShooterMotor2;
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new ShooterManuel(0));
   }
   public void shoot (double power){
-    localshooter1.set(power);
-    localshooter2.set(power);
+    localshooter1.set(ControlMode.PercentOutput,power);
+    localshooter2.set(ControlMode.PercentOutput,power);
   }
 
 }
