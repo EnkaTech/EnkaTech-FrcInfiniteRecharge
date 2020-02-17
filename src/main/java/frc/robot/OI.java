@@ -10,9 +10,17 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.ClimbManuel;
+import frc.robot.commands.HazneManuel;
+import frc.robot.commands.Intake;
+import frc.robot.commands.LuckywheelManuel;
+import frc.robot.commands.ManuelAngle;
+import frc.robot.commands.ShooterManuel;
+
 public class OI {
   public Joystick joy1 = new Joystick(0);
   public Joystick joy2 = new Joystick(1);
+
   public Button Green = new JoystickButton(joy1, 1);
   public Button Red = new JoystickButton(joy1, 2);
   public Button Blue = new JoystickButton(joy1, 3);
@@ -21,20 +29,31 @@ public class OI {
   public Button R1 = new JoystickButton(joy1, 6);
   public Button Back = new JoystickButton(joy1, 7);
   public Button Start = new JoystickButton(joy1, 8);
-  public Button LeftT = new JoystickButton(joy1, 9);
-  public Button RightT = new JoystickButton(joy1, 10);
+
   
   
-  public Button Hit = new JoystickButton(joy2, 1);
-  public Button Thumb = new JoystickButton(joy2, 2);
-  public Button Left1 = new JoystickButton(joy2, 3);
-  public Button Right1 = new JoystickButton(joy2, 4);
-  public Button Left2 = new JoystickButton(joy2, 5);
-  public Button Right2 = new JoystickButton(joy2, 6);
-  public Button Yellow3 = new JoystickButton(joy2, 7);
-  public Button Red3 = new JoystickButton(joy2, 8);
-  public Button Yellow2 = new JoystickButton(joy2, 9);
-  public Button Red2  = new JoystickButton(joy2, 10);
-  public Button Yellow1 = new JoystickButton(joy2, 11);
-  public Button Red1 = new JoystickButton(joy2, 12);
+  public Button Green2 = new JoystickButton(joy2, 1);
+  public Button Red2 = new JoystickButton(joy2, 2);
+  public Button Blue2 = new JoystickButton(joy2, 3);
+  public Button Yellow2 = new JoystickButton(joy2, 4);
+  public Button L12 = new JoystickButton(joy2, 5);
+  public Button R12= new JoystickButton(joy2, 6);
+  public Button Back2 = new JoystickButton(joy2, 7);
+  public Button Start2 = new JoystickButton(joy2, 8);
+  
+   public OI(){
+     Yellow2.whileHeld(new ClimbManuel(1));
+     Green2.whileHeld(new ClimbManuel(-1));
+     L12.whileHeld(new ShooterManuel(1));
+     Red2.whileHeld(new ManuelAngle(1));
+     Blue2.whileHeld(new ManuelAngle(-1));
+     Start2.whileHeld(new HazneManuel(1));
+     Back2.whileHeld(new HazneManuel(-1));
+     R12.whileHeld(new LuckywheelManuel(1));
+    
+
+
+
+
+   }
 }

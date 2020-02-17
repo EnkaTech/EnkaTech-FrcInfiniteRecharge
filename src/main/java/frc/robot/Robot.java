@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HazneManuel;
@@ -57,6 +58,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     IO = new OI();
+    RobotMap.driveSystem = new DifferentialDrive(RobotMap.left,RobotMap.right);
     m_chooser.setDefaultOption("Default Auto", new HazneManuel(0));
     SmartDashboard.putData("Auto mode", m_chooser);
     RobotMap.gyro.calibrate();

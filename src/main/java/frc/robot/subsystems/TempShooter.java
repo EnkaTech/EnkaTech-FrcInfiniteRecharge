@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.ShooterManuel;
@@ -18,8 +18,8 @@ import frc.robot.commands.ShooterManuel;
  */
 public class TempShooter extends Subsystem {
 
-  private VictorSPX localshooter1 = RobotMap.ShooterMotor1;
-  private VictorSPX localshooter2 = RobotMap.ShooterMotor2;
+  private TalonSRX localshooter1 = RobotMap.ShooterMotor1;
+  private TalonSRX localshooter2 = RobotMap.ShooterMotor2;
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

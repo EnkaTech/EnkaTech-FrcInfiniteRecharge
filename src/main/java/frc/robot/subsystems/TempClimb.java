@@ -7,7 +7,8 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.SpeedController;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.ClimbManuel;
@@ -16,8 +17,7 @@ import frc.robot.commands.ClimbManuel;
  * Add your docs here.
  */
 public class TempClimb extends Subsystem {
-  private static SpeedController localclimb1 = RobotMap.Climb1;
-  private static SpeedController localclimb2 = RobotMap.Climb2;
+
 
   @Override
   public void initDefaultCommand() {
@@ -25,8 +25,8 @@ public class TempClimb extends Subsystem {
     setDefaultCommand(new ClimbManuel(0.2));
   }
  public void climb (double power){
-  localclimb1.set(power);
-  localclimb2.set(-power);
+  RobotMap.Climb2.set(ControlMode.PercentOutput,power);
+  RobotMap.Climb1.set(ControlMode.PercentOutput,-power);
 }
 }
 

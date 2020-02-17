@@ -27,7 +27,7 @@ public class Hazne extends Subsystem {
     setDefaultCommand(new HazneManuel(0));
   }
   public void move(double power){
-    RobotMap.HazneMotor1.set(ControlMode.PercentOutput,power);
-    RobotMap.HazneMotor2.set(ControlMode.PercentOutput,power);
+    RobotMap.HazneMotor1.set(power);
+    RobotMap.HazneMotor2.set(power);
   }
 }

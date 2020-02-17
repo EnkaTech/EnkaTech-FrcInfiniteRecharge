@@ -13,7 +13,7 @@ public class DriveTrain extends Subsystem {
     	setDefaultCommand(new JoystickDrive());
     }
     public void drive(double x,double y) {
-        RobotMap.driveSystem.tankDrive(x, y);
+        RobotMap.driveSystem.tankDrive(-x, y);
     } 
     public void drive(Joystick joy,double mult) {
         if(p == false){

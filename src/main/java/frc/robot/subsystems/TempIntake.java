@@ -17,7 +17,7 @@ import frc.robot.commands.Intake;
  * Add your docs here.
  */
 public class TempIntake extends Subsystem {
-  private static VictorSPX localwheel = RobotMap.wheel1;
+  
 
   @Override
   public void initDefaultCommand() {
@@ -25,7 +25,7 @@ public class TempIntake extends Subsystem {
      setDefaultCommand(new Intake(0));
   }
    public void Intake (double power){
-   localwheel.set(ControlMode.PercentOutput,power);
+    RobotMap.wheel1.set(power);
 
    }
 
