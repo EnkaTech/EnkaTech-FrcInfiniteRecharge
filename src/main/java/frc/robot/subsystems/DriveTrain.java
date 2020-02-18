@@ -17,10 +17,10 @@ public class DriveTrain extends Subsystem {
     } 
     public void drive(Joystick joy,double mult) {
         if(p == false){
-        drive(joy.getRawAxis(5)*mult,joy.getRawAxis(1)*mult);
+        drive(joy.getRawAxis(5)*-mult,joy.getRawAxis(1)*mult);
         }
         else if (p == true){
-        drive(joy.getRawAxis(5)*-mult, joy.getRawAxis(1)*-mult);
+        drive(joy.getRawAxis(5)*mult, joy.getRawAxis(1)*-mult);
         }
     }
 

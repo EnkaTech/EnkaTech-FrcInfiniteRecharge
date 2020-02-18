@@ -30,7 +30,7 @@ public class RobotMap {
   public static VictorSPX Climb1 = new VictorSPX(4);
   public static VictorSPX Climb2 = new VictorSPX(5);
   //Intake
-  public static VictorSP wheel1 = new VictorSP(1);
+  public static VictorSP intake = new VictorSP(1);
   //Shooter
   public static TalonSRX ShooterMotor2 = new TalonSRX(1);
   public static TalonSRX ShooterMotor1 = new TalonSRX(2);
@@ -42,4 +42,5 @@ public class RobotMap {
   public static SpeedController HazneMotor1  = new VictorSP(7);
   //LED
   public static VictorSP LED = new VictorSP(2);
+  public static boolean lightsOn = false;
   }

@@ -10,13 +10,16 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HazneManuel;
+import frc.robot.commands.LEDcontrol;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.VisionTargetting;
 import frc.robot.subsystems.Hazne;
+import frc.robot.subsystems.LEDsubsystem;
 import frc.robot.subsystems.TempClimb;
 import frc.robot.subsystems.TempIntake;
 import frc.robot.subsystems.TempShooter;
@@ -45,12 +48,13 @@ public class Robot extends TimedRobot {
   public static NetworkTable visiontable;
   public static CameraServer cameraServer;
   public static UsbCamera visionCam;
+  public static LEDsubsystem leDsubsystem = new LEDsubsystem();
   public static TempShooterAngle tanglemanuel = new TempShooterAngle();
   public static TempShooter tshooter = new TempShooter();
   public static TempIntake tintake = new TempIntake(); 
   public static TempClimb tclimb = new TempClimb();
   public static TempWheel twheel = new TempWheel();
-  public static double x = 0;
+  
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -66,6 +70,8 @@ public class Robot extends TimedRobot {
     visionCam = cameraServer.startAutomaticCapture();
     visionCam.setResolution(640, 480);
     visiontable = NetworkTableInstance.getDefault().getTable("imgproc");
+    RobotMap.leftMotor1.setInverted(true);
+    RobotMap.leftMotor2.setInverted(true);
   }
 
   /**

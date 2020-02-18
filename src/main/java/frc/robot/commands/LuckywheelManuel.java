@@ -14,9 +14,8 @@ public class LuckywheelManuel extends Command {
   private double power;
   public LuckywheelManuel(double p) {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.twheel);
-    p = power;
-   
+   requires(Robot.twheel);
+   power = p;
   }
 
   // Called just before this Command runs the first time
