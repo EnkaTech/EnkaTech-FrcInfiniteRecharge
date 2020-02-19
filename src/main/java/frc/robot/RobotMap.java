@@ -6,9 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -34,8 +37,11 @@ public class RobotMap {
   public static VictorSPX intake = new VictorSPX(4);
   //Shooter
   public static TalonSRX ShooterMotor1 = new TalonSRX(1);
-  //public static TalonSRX ShooterMotor2 = new TalonSRX(2);
+  public static TalonSRX ShooterMotor2 = new TalonSRX(2);
   public static TalonSRX ShooterAngleMotor = new TalonSRX(3);
+  public static Encoder ShooterEncoder = new Encoder(0, 1, false, EncodingType.k4X);
+  private static double ShooterPPR = 2048;
+  public static double ShooterRPP = 1/ShooterPPR ;
   //Çark 
   public static VictorSPX LuckyWheel = new VictorSPX(5);
   //Hazne
@@ -43,4 +49,5 @@ public class RobotMap {
   public static SpeedController HazneMotor1 = new VictorSP(1);
   //LED
   public static VictorSP LED = new VictorSP(2);
+  
   }

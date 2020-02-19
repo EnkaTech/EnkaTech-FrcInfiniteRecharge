@@ -29,6 +29,7 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.cameraserver.CameraServer;
+import frc.robot.subsystems.ShooterRPM;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -54,6 +55,7 @@ public class Robot extends TimedRobot {
   public static TempIntake tintake = new TempIntake(); 
   public static TempClimb tclimb = new TempClimb();
   public static TempWheel twheel = new TempWheel();
+  public static ShooterRPM SRPM = new ShooterRPM(); 
   
   /**
    * This function is run when the robot is first started up and should be
@@ -72,6 +74,7 @@ public class Robot extends TimedRobot {
     visiontable = NetworkTableInstance.getDefault().getTable("imgproc");
     RobotMap.leftMotor1.setInverted(true);
     RobotMap.leftMotor2.setInverted(true);
+    RobotMap.ShooterEncoder.setDistancePerPulse(RobotMap.ShooterRPP);
   }
 
   /**
@@ -153,6 +156,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    Robot.SRPM.enable();
     Scheduler.getInstance().run();
 
   }

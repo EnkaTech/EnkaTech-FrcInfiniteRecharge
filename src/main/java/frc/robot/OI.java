@@ -18,6 +18,7 @@ import frc.robot.commands.LuckywheelManuel;
 import frc.robot.commands.ManuelAngle;
 import frc.robot.commands.ShooterAngle;
 import frc.robot.commands.ShooterManuel;
+import frc.robot.commands.ShooterRPMsetter;
 
 public class OI {
   public Joystick joy1 = new Joystick(0);
@@ -31,7 +32,8 @@ public class OI {
   public Button R1 = new JoystickButton(joy1, 6);
   public Button Back = new JoystickButton(joy1, 7);
   public Button Start = new JoystickButton(joy1, 8);
-
+  public Button L2 = new JoystickButton(joy1, 11);
+  public Button R2 = new JoystickButton(joy1, 12);
   
   
   public Button Green2 = new JoystickButton(joy2, 1);
@@ -45,18 +47,26 @@ public class OI {
   public Button L32 = new JoystickButton(joy2, 9);
   public Button R32 = new JoystickButton(joy2, 10);
    public OI(){
-     Yellow2.whileHeld(new ClimbManuel(0.5));
-     Green2.whileHeld(new ClimbManuel(-0.5));
-     L1.whileHeld(new ShooterManuel(1));
-     Red.whileHeld(new ManuelAngle(1));
-     Blue.whileHeld(new ManuelAngle(-1));
-     Start2.whileHeld(new HazneManuel(1));
-     Back2.whileHeld(new HazneManuel(-1));
-     R12.whileHeld(new LuckywheelManuel(1));
-     Green.whileHeld(new LEDcontrol(1));
-     Yellow.whileHeld(new LEDcontrol(0));
-     R1.whileHeld(new Intake(1));
-     Start.whenPressed(new ShooterAngle());
-
-   }
+   //Şase Sürücüsü
+   //Açı ayarlama
+   Blue.whileHeld(new ManuelAngle(1));
+   Red.whileHeld(new ManuelAngle(-1));
+   //Shooter
+   L1.whileHeld(new ShooterManuel(1));
+   //Intake
+   R1.whileHeld(new Intake(1));
+   //PID
+   L2.whileHeld(new ShooterAngle());
+   R2.whileHeld(new ShooterRPMsetter());
+   //İkinci sürücü
+   //Hazne
+   Yellow2.whileHeld(new HazneManuel(1));
+   Green2.whileHeld(new HazneManuel(-1));
+   //Çark
+   Blue2.whileHeld(new LuckywheelManuel(1)); 
+   Red2.whileHeld(new LuckywheelManuel(-1));
+   //Asansör
+   Start2.whileHeld(new ClimbManuel(1));
+   Back2.whileHeld(new ClimbManuel(-1));
+  }
 }
