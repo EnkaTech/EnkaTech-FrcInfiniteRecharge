@@ -22,11 +22,11 @@ public class TempClimb extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new ClimbManuel(0.2));
+    setDefaultCommand(new ClimbManuel(0));
   }
  public void climb (double power){
-  RobotMap.Climb2.set(ControlMode.PercentOutput,power);
-  RobotMap.Climb1.set(ControlMode.PercentOutput,-power);
+  RobotMap.Climb2.set(power);
+  RobotMap.Climb1.set(power);
 }
 }
 

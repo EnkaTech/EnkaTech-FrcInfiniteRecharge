@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.LuckywheelManuel;
@@ -25,7 +27,7 @@ public class TempWheel extends Subsystem {
 
     //Wheel motor
      public void turn(double x) {
-    RobotMap.LuckyWheel.set(x);
+    RobotMap.LuckyWheel.set(ControlMode.PercentOutput,x);
   }
 
 

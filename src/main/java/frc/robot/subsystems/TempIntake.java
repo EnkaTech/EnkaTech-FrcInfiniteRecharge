@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.Intake;
@@ -23,7 +25,7 @@ public class TempIntake extends Subsystem {
      setDefaultCommand(new Intake(0));
   }
    public void Intake (double power){
-    RobotMap.intake.set(power);
+    RobotMap.intake.set(ControlMode.PercentOutput,power);
 
    }
 

@@ -19,7 +19,7 @@ import frc.robot.commands.ShooterManuel;
 public class TempShooter extends Subsystem {
 
   private TalonSRX localshooter1 = RobotMap.ShooterMotor1;
-  private TalonSRX localshooter2 = RobotMap.ShooterMotor2;
+  //private TalonSRX localshooter2 = RobotMap.ShooterMotor2;
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -27,7 +27,7 @@ public class TempShooter extends Subsystem {
   }
   public void shoot (double power){
     localshooter1.set(ControlMode.PercentOutput,power);
-    localshooter2.set(ControlMode.PercentOutput,power);
+    //localshooter2.set(ControlMode.PercentOutput,power);
   }
 
 }

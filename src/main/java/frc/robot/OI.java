@@ -45,8 +45,8 @@ public class OI {
   public Button L32 = new JoystickButton(joy2, 9);
   public Button R32 = new JoystickButton(joy2, 10);
    public OI(){
-     Yellow2.whileHeld(new ClimbManuel(1));
-     Green2.whileHeld(new ClimbManuel(-1));
+     Yellow2.whileHeld(new ClimbManuel(0.5));
+     Green2.whileHeld(new ClimbManuel(-0.5));
      L1.whileHeld(new ShooterManuel(1));
      Red.whileHeld(new ManuelAngle(1));
      Blue.whileHeld(new ManuelAngle(-1));
