@@ -15,11 +15,12 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HazneManuel;
-import frc.robot.commands.LEDcontrol;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.VisionTargetting;
 import frc.robot.subsystems.Hazne;
 import frc.robot.subsystems.LEDsubsystem;
+import frc.robot.subsystems.ShooterRPM;
 import frc.robot.subsystems.TempClimb;
 import frc.robot.subsystems.TempIntake;
 import frc.robot.subsystems.TempShooter;
@@ -29,7 +30,6 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.cameraserver.CameraServer;
-import frc.robot.subsystems.ShooterRPM;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -55,7 +55,7 @@ public class Robot extends TimedRobot {
   public static TempIntake tintake = new TempIntake(); 
   public static TempClimb tclimb = new TempClimb();
   public static TempWheel twheel = new TempWheel();
-  public static ShooterRPM SRPM = new ShooterRPM(); 
+  public static ShooterRPM SRPM = new ShooterRPM();
   
   /**
    * This function is run when the robot is first started up and should be
@@ -63,9 +63,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    IO = new OI();  
+    IO = new OI();
     RobotMap.driveSystem = new DifferentialDrive(RobotMap.left,RobotMap.right);
-    m_chooser.setDefaultOption("Default Auto", new HazneManuel(0));
+    m_chooser.setDefaultOption("Default Auto", new AutonomousCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     RobotMap.gyro.calibrate();
     cameraServer = CameraServer.getInstance();
@@ -74,7 +74,6 @@ public class Robot extends TimedRobot {
     visiontable = NetworkTableInstance.getDefault().getTable("imgproc");
     RobotMap.leftMotor1.setInverted(true);
     RobotMap.leftMotor2.setInverted(true);
-    RobotMap.ShooterEncoder.setDistancePerPulse(RobotMap.ShooterRPP);
   }
 
   /**
@@ -87,6 +86,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashboard.putNumber("RPM", RobotMap.ShooterEncoder.getRate()*60 );
+    SmartDashboard.putNumber("VisionError",Robot.visiontable.getEntry("Heading").getDouble(0));
     
   }
 
@@ -104,32 +105,14 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
   }
 
-  /**
-   * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString code to get the auto name from the text box below the Gyro
-   *
-   * <p>You can add additional auto modes by adding additional commands to the
-   * chooser code above (like the commented example) or additional comparisons
-   * to the switch structure below with additional strings & commands.
-   */
   @Override
   public void autonomousInit() {
-    //m_autonomousCommand = m_chooser.getSelected();
+    
+    RobotMap.gyro.reset();
 
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
-     */
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
+ 
+     new AutonomousCommand().start();
+    
   }
 
   /**
@@ -156,9 +139,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    Robot.SRPM.enable();
     Scheduler.getInstance().run();
-
+    
   }
 
   /**
