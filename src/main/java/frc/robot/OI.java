@@ -30,10 +30,10 @@ public class OI {
   public Button Yellow = new JoystickButton(joy1, 4);
   public Button L1 = new JoystickButton(joy1, 5);
   public Button R1 = new JoystickButton(joy1, 6);
-  public Button Back = new JoystickButton(joy1, 7);
-  public Button Start = new JoystickButton(joy1, 8);
-  public Button L2 = new JoystickButton(joy1, 11);
-  public Button R2 = new JoystickButton(joy1, 12);
+  public Button L2 = new JoystickButton(joy1, 7);
+  public Button R2 = new JoystickButton(joy1, 8);
+  public Button Back = new JoystickButton(joy1, 9);
+  public Button Start = new JoystickButton(joy1, 10);
   
   
   public Button Green2 = new JoystickButton(joy2, 1);
@@ -54,7 +54,7 @@ public class OI {
    //Shooter
    L1.whileHeld(new ShooterManuel(1));
    //Intake
-   R1.whileHeld(new Intake(1));
+   R1.whileHeld(new Intake(-1));
    //PID
    L2.whileHeld(new ShooterAngle());
    R2.whileHeld(new ShooterRPMsetter());
@@ -66,7 +66,7 @@ public class OI {
    Blue2.whileHeld(new LuckywheelManuel(1)); 
    Red2.whileHeld(new LuckywheelManuel(-1));
    //Asansör
-   Start2.whileHeld(new ClimbManuel(1));
-   Back2.whileHeld(new ClimbManuel(-1));
+   Start2.whileHeld(new ClimbManuel(-0.5));
+   Back2.whileHeld(new ClimbManuel(0.5));
   }
 }

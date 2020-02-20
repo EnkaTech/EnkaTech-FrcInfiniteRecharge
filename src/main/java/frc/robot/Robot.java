@@ -63,7 +63,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    IO = new OI();
+    IO = new OI();  
     RobotMap.driveSystem = new DifferentialDrive(RobotMap.left,RobotMap.right);
     m_chooser.setDefaultOption("Default Auto", new HazneManuel(0));
     SmartDashboard.putData("Auto mode", m_chooser);

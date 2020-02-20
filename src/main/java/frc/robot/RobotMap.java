@@ -41,7 +41,7 @@ public class RobotMap {
   public static TalonSRX ShooterAngleMotor = new TalonSRX(3);
   public static Encoder ShooterEncoder = new Encoder(0, 1, false, EncodingType.k4X);
   private static double ShooterPPR = 2048;
-  public static double ShooterRPP = 1/ShooterPPR ;
+  public static double ShooterRPP = ShooterPPR ;
   //Çark 
   public static VictorSPX LuckyWheel = new VictorSPX(5);
   //Hazne
