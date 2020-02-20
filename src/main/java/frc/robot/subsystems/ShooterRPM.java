@@ -48,7 +48,7 @@ public class ShooterRPM extends PIDSubsystem {
   @Override
   protected void usePIDOutput(double output) {
     // Use output to drive your system, like a motor
-    RobotMap.ShooterMotor1.set(ControlMode.PercentOutput,1+output);
+    RobotMap.ShooterMotor1.set(ControlMode.Follower,2);
     RobotMap.ShooterMotor2.set(ControlMode.PercentOutput,1+output);
   } 
 }
