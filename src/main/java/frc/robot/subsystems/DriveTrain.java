@@ -25,7 +25,6 @@ public class DriveTrain extends Subsystem {
     public void GyroDrive(ADIS16448_IMU gyro,boolean x) {
 		double angle = gyro.getAngle();
 		if(x) {
-           
             RobotMap.left.setVoltage((0.5-angle*Kp)*12);
             RobotMap.right.setVoltage((0.5+angle*Kp)*12);
 		}

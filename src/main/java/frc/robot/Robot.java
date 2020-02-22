@@ -71,7 +71,7 @@ public class Robot extends TimedRobot {
     cameraServer = CameraServer.getInstance();
     visionCam = cameraServer.startAutomaticCapture();
     visionCam.setResolution(640, 480);
-    visiontable = NetworkTableInstance.getDefault().getTable("imgproc");
+    visiontable = NetworkTableInstance.getDefault().getTable("chameleon-vision").getSubTable("ps3-eye camera");
     RobotMap.leftMotor1.setInverted(true);
     RobotMap.leftMotor2.setInverted(true);
   }
@@ -87,7 +87,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     SmartDashboard.putNumber("RPM", RobotMap.ShooterEncoder.getRate()*60 );
-    SmartDashboard.putNumber("VisionError",Robot.visiontable.getEntry("Heading").getDouble(0));
+    SmartDashboard.putNumber("VisionError",Robot.visiontable.getEntry("targetYaw").getDouble(0));
     
   }
 

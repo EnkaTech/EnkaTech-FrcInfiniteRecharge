@@ -21,6 +21,7 @@ public class ShooterAngle extends Command {
   @Override
   protected void initialize() {
     RobotMap.LED.set(1);
+    Robot.visionsystem.enable();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -39,6 +40,7 @@ public class ShooterAngle extends Command {
   @Override
   protected void end() {
     RobotMap.LED.set(0);
+    Robot.visionsystem.disable();
   }
 
   // Called when another command which requires one or more of the same
