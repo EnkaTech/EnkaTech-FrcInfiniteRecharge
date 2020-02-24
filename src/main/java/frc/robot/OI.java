@@ -57,7 +57,7 @@ public class OI {
    R1.whileHeld(new Intake(-1));
    //PID
    L2.whileHeld(new ShooterAngle());
-   R2.whileHeld(new ShooterRPMsetter());
+   R2.whileHeld(new ShooterRPMsetter(5500));
    //İkinci sürücü
    //Hazne
    Yellow2.whileHeld(new HazneManuel(1));

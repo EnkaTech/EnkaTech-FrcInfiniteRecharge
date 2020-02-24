@@ -9,8 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-import frc.robot.subsystems.DriveTrain;
+
 
 public class GyroTurn extends Command {
   public double angle;

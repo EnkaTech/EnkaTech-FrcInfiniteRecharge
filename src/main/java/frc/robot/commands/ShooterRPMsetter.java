@@ -11,20 +11,23 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ShooterRPMsetter extends Command {
-  public ShooterRPMsetter() {
+  public double power;
+  public ShooterRPMsetter(double x) {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.SRPM);
+    power = x;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      Robot.SRPM.setSetpoint(5500);
+      Robot.SRPM.setSetpoint(power);
     }
 
   // Make this return true when this Command no longer needs to run execute()

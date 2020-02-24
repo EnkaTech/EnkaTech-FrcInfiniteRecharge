@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.ShooterRPMsetter;
 
 /**
  * Add your docs here.
@@ -34,7 +35,7 @@ public class ShooterRPM extends PIDSubsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new ShooterRPMsetter(5500));
   }
 
   @Override
