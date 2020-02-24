@@ -32,7 +32,7 @@ public class VisionTargetting extends PIDSubsystem {
 
   @Override
   protected double returnPIDInput() {
-    double Visionerror = Robot.visiontable.getEntry("Heading").getDouble(0);
+    double Visionerror = Robot.visiontable.getEntry("targetYaw").getDouble(0);
  
   return Visionerror;
   }
