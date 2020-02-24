@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HazneManuel;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.GyroTurn;
 import frc.robot.subsystems.VisionTargetting;
 import frc.robot.subsystems.Hazne;
 import frc.robot.subsystems.LEDsubsystem;
@@ -56,7 +57,7 @@ public class Robot extends TimedRobot {
   public static TempClimb tclimb = new TempClimb();
   public static TempWheel twheel = new TempWheel();
   public static ShooterRPM SRPM = new ShooterRPM();
-  
+  public static GyroTurn Gturn = new GyroTurn();
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -86,6 +87,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashboard.putNumber("Angle",RobotMap.gyro.getAngle());
     SmartDashboard.putNumber("RPM", RobotMap.ShooterEncoder.getRate()*60 );
     SmartDashboard.putNumber("VisionError",Robot.visiontable.getEntry("Heading").getDouble(0));
     
@@ -107,7 +109,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    
+    Robot.Gturn.enable();
     RobotMap.gyro.reset();
 
  
@@ -132,6 +134,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    Robot.Gturn.disable();
   }
 
   /**
