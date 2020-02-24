@@ -23,31 +23,19 @@ public class DriveTrain extends Subsystem {
         drive(joy.getRawAxis(1)*mult, joy.getRawAxis(3)*-mult);
     }
     public void GyroDrive(ADIS16448_IMU gyro,boolean x) {
+        gyro.reset();
 		double angle = gyro.getAngle();
 		if(x) {
-<<<<<<< HEAD
            
-            RobotMap.left.setVoltage((angle*Kp+0.3)*12);
+            RobotMap.left.setVoltage((-angle*Kp+0.3)*12);
             RobotMap.right.setVoltage((0.3+angle*Kp)*12);
-=======
-            RobotMap.left.setVoltage((0.5-angle*Kp)*12);
-            RobotMap.right.setVoltage((0.5+angle*Kp)*12);
->>>>>>> 0c7fe48ac71acd635a26431cbe5a52b2bbfe2771
 		}
 		else {
             RobotMap.left.setVoltage((angle*Kp+0.3)*-12);
-            RobotMap.right.setVoltage((0.5+angle*0.3)*-12);
+            RobotMap.right.setVoltage((0.3-angle*Kp)*-12);
 		}
 		Timer.delay(0.0004);
 	}
-	public void GyroTurn(ADIS16448_IMU gyro,double turn) {
-		double angle = gyro.getAngle();
-		double power=(turn-angle)*Kp*1;
-		Timer.delay(0.0004);
-        RobotMap.left.setVoltage(-power*12);
-        RobotMap.right.setVoltage(power*12);
-    
-    }
 
 	
 }
